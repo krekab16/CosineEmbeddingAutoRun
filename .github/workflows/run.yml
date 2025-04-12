@@ -1,24 +1,24 @@
-name: Run Colab Notebook
+# name: Run Colab Notebook
 
-on:
-  schedule:
-    # Ez óránkénti futtatást jelent
-    - cron: '0 * * * *'
+# on:
+#   schedule:
+#     # Ez óránkénti futtatást jelent
+#     - cron: '0 * * * *'
 
-jobs:
-  run_colab:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+# jobs:
+#   run_colab:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v2
 
-      - name: Install necessary libraries
-        run: |
-          python3 -m pip install --upgrade pip
-          pip install requests
+#       - name: Install necessary libraries
+#         run: |
+#           python3 -m pip install --upgrade pip
+#           pip install requests
 
-      - name: Set up environment variables
-        run: echo "GOOGLE_APPLICATION_CREDENTIALS=${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" >> $GITHUB_ENV
+#       - name: Set up environment variables
+#         run: echo "GOOGLE_APPLICATION_CREDENTIALS=${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" >> $GITHUB_ENV
 
       - name: Run Colab notebook
         run: |
