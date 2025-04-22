@@ -2,7 +2,6 @@ name: Run Colab Notebook
 
 on:
   schedule:
-    # Ez óránkénti futtatást jelent
     - cron: '0 * * * *'
   workflow_dispatch: 
 
