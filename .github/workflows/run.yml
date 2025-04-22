@@ -1,26 +1,31 @@
-# name: Run Colab Notebook
+name: Run Colab Notebook
 
-# on:
-#   schedule:
-#     # Ez óránkénti futtatást jelent
-#     - cron: '0 * * * *'
+on:
+  schedule:
+    # Ez óránkénti futtatást jelent
+    - cron: '0 * * * *'
+  workflow_dispatch: 
 
-# jobs:
-#   run_colab:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout repository
-#         uses: actions/checkout@v2
+jobs:
+  run_colab:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-#       - name: Install necessary libraries
-#         run: |
-#           python3 -m pip install --upgrade pip
-#           pip install requests
-
-#       - name: Set up environment variables
-#         run: echo "GOOGLE_APPLICATION_CREDENTIALS=${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" >> $GITHUB_ENV
-
-      - name: Run Colab notebook
+      - name: Install necessary libraries
         run: |
-          # Colab notebook futtatása Python kóddal, az API_KEY változó használata
-          python3 run_colab_notebook.py
+          python3 -m pip install --upgrade pip
+          pip install requests google-cloud-firestore scikit-learn pandas
+
+      - name: Set up Google Application Credentials
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS_CONTENT: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON }}
+        run: |
+          echo "$GOOGLE_APPLICATION_CREDENTIALS_CONTENT" > credentials.json
+          echo "GOOGLE_APPLICATION_CREDENTIALS=$PWD/credentials.json" >> $GITHUB_ENV
+
+      - name: Run notebook script
+        run: |
+          python3 cosine_similarity_embeddings.py
+
