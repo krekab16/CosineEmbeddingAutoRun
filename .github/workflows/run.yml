@@ -1,4 +1,4 @@
-name: Run Colab Notebook
+name: Run Notebook Script
 
 on:
   schedule:
