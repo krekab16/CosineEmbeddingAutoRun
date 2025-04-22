@@ -24,7 +24,7 @@ jobs:
           echo "$GOOGLE_APPLICATION_CREDENTIALS_CONTENT" > credentials.json
           echo "GOOGLE_APPLICATION_CREDENTIALS=$PWD/credentials.json" >> $GITHUB_ENV
 
-      - name: Run notebook script
+      - name: Run Notebook Script
         run: |
           python3 cosine_similarity_embeddings.py
 
