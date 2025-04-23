@@ -26,5 +26,5 @@ jobs:
 
       - name: Run Notebook Script
         run: |
-          python3 cosine_similarity_embeddings.py
+          python3 cosine_similarity_embedding.py
 
