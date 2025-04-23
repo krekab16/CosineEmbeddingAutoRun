@@ -1,13 +1,10 @@
 
-from google.colab import drive
 import os
 from google.cloud import firestore
 from sklearn.feature_extraction.text import TfidfVectorizer
 import pandas as pd
 
-drive.mount('/content/drive')
-
-file_path = "/content/drive/MyDrive/Szakdolgozat_MSc/szakdolgozat-a9498-c9d93c04fb55.json"
+file_path = "credentials.json" 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = file_path
 firestore_client = firestore.Client()
 
