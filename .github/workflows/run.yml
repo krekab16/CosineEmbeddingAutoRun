@@ -21,8 +21,8 @@
 #         env:
 #           GOOGLE_APPLICATION_CREDENTIALS_CONTENT: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON }}
 #         run: |
-#           echo "$GOOGLE_APPLICATION_CREDENTIALS_CONTENT" > credentials.json
-#           echo "GOOGLE_APPLICATION_CREDENTIALS=$PWD/credentials.json" >> $GITHUB_ENV
+#           echo "$GOOGLE_APPLICATION_CREDENTIALS_CONTENT" > szakdolgozat-a9498-c9d93c04fb55.json
+#           echo "GOOGLE_APPLICATION_CREDENTIALS=$PWD/szakdolgozat-a9498-c9d93c04fb55.json" >> $GITHUB_ENV
 
 #       - name: Run Notebook Script
 #         run: |
