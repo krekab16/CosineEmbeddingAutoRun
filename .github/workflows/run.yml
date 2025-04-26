@@ -1,30 +1,30 @@
-# name: Run Notebook Script
+name: Run Notebook Script
 
-# on:
-#   schedule:
-#     - cron: '0 * * * *'
-#   workflow_dispatch: 
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch: 
 
-# jobs:
-#   run_colab:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout repository
-#         uses: actions/checkout@v2
+jobs:
+  run_colab:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-#       - name: Install necessary libraries
-#         run: |
-#           python3 -m pip install --upgrade pip
-#           pip install requests google-cloud-firestore scikit-learn pandas
+      - name: Install necessary libraries
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install requests google-cloud-firestore scikit-learn pandas
 
-#       - name: Set up Google Application Credentials
-#         env:
-#           GOOGLE_APPLICATION_CREDENTIALS_CONTENT: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON }}
-#         run: |
-#           echo "$GOOGLE_APPLICATION_CREDENTIALS_CONTENT" > szakdolgozat-a9498-c9d93c04fb55.json
-#           echo "GOOGLE_APPLICATION_CREDENTIALS=$PWD/szakdolgozat-a9498-c9d93c04fb55.json" >> $GITHUB_ENV
+      - name: Set up Google Application Credentials
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS_CONTENT: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON }}
+        run: |
+          echo "$GOOGLE_APPLICATION_CREDENTIALS_CONTENT" > szakdolgozat-a9498-c9d93c04fb55.json
+          echo "GOOGLE_APPLICATION_CREDENTIALS=$PWD/szakdolgozat-a9498-c9d93c04fb55.json" >> $GITHUB_ENV
 
-#       - name: Run Notebook Script
-#         run: |
-#           python3 cosine_similarity_embedding.py
+      - name: Run Notebook Script
+        run: |
+          python3 cosine_similarity_embedding.py
 
